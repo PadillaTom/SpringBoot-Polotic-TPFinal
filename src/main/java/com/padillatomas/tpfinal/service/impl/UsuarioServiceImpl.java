@@ -1,5 +1,7 @@
 package com.padillatomas.tpfinal.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.padillatomas.tpfinal.model.Usuario;
@@ -20,11 +22,20 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 
-	// *** Methods ***
+	// **********************************
+	// Methods
+	// **********************************
 	
+	// --- CREATE ---
 	@Override
 	public Usuario saveUsuario(Usuario usuario) {		
 		return usuarioRepository.save(usuario);
+	}
+
+	// --- FETCH ALL ---
+	@Override
+	public List<Usuario> fetchUsuarios() {
+		return usuarioRepository.findAll();
 	}
 
 }
