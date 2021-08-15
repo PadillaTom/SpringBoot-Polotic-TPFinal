@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.padillatomas.tpfinal.model.Usuario;
 import com.padillatomas.tpfinal.service.UsuarioService;
 
-
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:3000","https://tpfinal-polotic.netlify.app"}, allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
