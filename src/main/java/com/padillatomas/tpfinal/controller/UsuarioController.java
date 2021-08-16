@@ -39,4 +39,6 @@ public class UsuarioController {
 	public List<Usuario> fetchAllUsuarios(){
 		return usuarioService.fetchUsuarios();
 	}
+	
+	
 }
