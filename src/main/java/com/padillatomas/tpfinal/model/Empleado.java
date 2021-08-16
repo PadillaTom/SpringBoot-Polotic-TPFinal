@@ -42,6 +42,8 @@ public class Empleado {
 		this.direccionEmpleado = direccionEmpleado;
 		this.cargoEmpleado = cargoEmpleado;
 	}
+	
+	
 	public Long getEmpleadoId() {
 		return empleadoId;
 	}
@@ -53,6 +55,12 @@ public class Empleado {
 	}
 	public void setDniEmpleado(String dniEmpleado) {
 		this.dniEmpleado = dniEmpleado;
+	}
+	public String getNombreEmpleado() {
+		return nombreEmpleado;
+	}
+	public void setNombreEmpleado(String nombreEmpleado) {
+		this.nombreEmpleado = nombreEmpleado;
 	}
 	public String getApellidoEmpleado() {
 		return apellidoEmpleado;
