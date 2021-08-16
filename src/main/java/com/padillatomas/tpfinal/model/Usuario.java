@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(
 			name= "empleado_id",
 			referencedColumnName = "empleadoId"
