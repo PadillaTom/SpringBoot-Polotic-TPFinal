@@ -22,10 +22,13 @@ public class HabitacionController {
 		this.habitacionService = habitacionService;
 	}
 	
-	// --- GET ALL ---
+	// ::: Get All :::
 	@GetMapping
 	public List<Habitacion> fetchAllHabitaciones(){
 		return habitacionService.fetchHabitaciones();
 	}
+	
+	// ::: Get by Type :::
+	
 	
 }

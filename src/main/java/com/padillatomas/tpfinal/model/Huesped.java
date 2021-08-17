@@ -1,12 +1,16 @@
 package com.padillatomas.tpfinal.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,17 +23,25 @@ public class Huesped {
 	
 	@Column(name="dni_huesped")
 	private String dniHuesped;
+	
 	@Column(name="nombre_huesped")
 	private String nombreHuesped;
+	
 	@Column(name="apellido_huesped")
 	private String apellidoHuesped;
+	
 	@Column(name="fecha_nac_huesped")
 	private Date fechaNacHuesped;
+	
 	@Column(name="direccion_huesped")
 	private String direccionHuesped;
+	
 	@Column(name="profesion_huesped")
 	private String profesionHuesped;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name ="reserva_id", referencedColumnName ="reservaId")
+	private List<Reserva> huesReserva;
 	
 	public Huesped() {}
 	
@@ -43,7 +55,6 @@ public class Huesped {
 		this.direccionHuesped = direccionHuesped;
 		this.profesionHuesped = profesionHuesped;
 	}
-
 
 	public Long getHuespedId() {
 		return huespedId;
@@ -86,6 +97,12 @@ public class Huesped {
 	}
 	public void setProfesionHuesped(String profesionHuesped) {
 		this.profesionHuesped = profesionHuesped;
+	}
+	public List<Reserva> getHuesReserva() {
+		return huesReserva;
+	}
+	public void setHuesReserva(List<Reserva> huesReserva) {
+		this.huesReserva = huesReserva;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.padillatomas.tpfinal.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,6 +36,9 @@ public class Usuario {
 			)
 	private Empleado usuEmpleado;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name ="reserva_id", referencedColumnName ="reservaId")
+	private List<Reserva> usuReserva;
 	
 	public Usuario() {};	
 	
@@ -42,12 +48,12 @@ public class Usuario {
 		this.usuEmpleado = usuEmpleado;
 	}
 
-	public long getId() {
+	public long getUsuarioId() {
 		return usuarioId;
 	}
 
-	public void setId(long id) {
-		this.usuarioId = id;
+	public void setUsuarioId(long usuarioId) {
+		this.usuarioId = usuarioId;
 	}
 
 	public String getUsername() {
@@ -72,6 +78,14 @@ public class Usuario {
 
 	public void setUsuEmpleado(Empleado usuEmpleado) {
 		this.usuEmpleado = usuEmpleado;
+	}
+	
+	public List<Reserva> getUsuReserva() {
+		return usuReserva;
+	}
+
+	public void setUsuReserva(List<Reserva> usuReserva) {
+		this.usuReserva = usuReserva;
 	}
 	
 	

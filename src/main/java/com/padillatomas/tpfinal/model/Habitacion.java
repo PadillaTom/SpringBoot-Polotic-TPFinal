@@ -1,10 +1,15 @@
 package com.padillatomas.tpfinal.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,11 +29,15 @@ public class Habitacion {
 	@Column(name="precio_noche_habitacion")
 	private double precioNocheHabitacion;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name ="reserva_id", referencedColumnName ="reservaId")
+	private List<Reserva> habReserva;
 	
-	
+
 	public Habitacion() {
 		
 	}	
+	
 	public Habitacion(int pisoHabitacion, String nombreHabitacion, String tipoHabitacion,
 			double precioNocheHabitacion) {
 		super();
@@ -68,6 +77,12 @@ public class Habitacion {
 	}
 	public void setPrecioNocheHabitacion(double precioNocheHabitacion) {
 		this.precioNocheHabitacion = precioNocheHabitacion;
+	}
+	public List<Reserva> getHabReserva() {
+		return habReserva;
+	}
+	public void setHabReserva(List<Reserva> habReserva) {
+		this.habReserva = habReserva;
 	}
 	
 	
