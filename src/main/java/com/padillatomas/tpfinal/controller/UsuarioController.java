@@ -18,23 +18,23 @@ import com.padillatomas.tpfinal.service.UsuarioService;
 @RestController
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
+	
 	private UsuarioService usuarioService;
 
 	
-	// *** Constructor ***
-	
+	// *** Constructor ***	
 	public UsuarioController(UsuarioService usuarioService) {
 		super();
 		this.usuarioService = usuarioService;
 	}
 	
-	// *** CREATE USUARIO REST API ***
+	// ::: POST Usuarios :::
 	@PostMapping
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){
 		return new ResponseEntity<Usuario>(usuarioService.saveUsuario(usuario), HttpStatus.CREATED);
 	}
 	
-	// *** GET ALL USUARIOS ***
+	// ::: GET Usuarios :::
 	@GetMapping
 	public List<Usuario> fetchAllUsuarios(){
 		return usuarioService.fetchUsuarios();

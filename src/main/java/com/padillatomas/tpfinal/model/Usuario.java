@@ -37,7 +37,6 @@ public class Usuario {
 	private Empleado usuEmpleado;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name ="reserva_id", referencedColumnName ="reservaId")
 	private List<Reserva> usuReserva;
 	
 	public Usuario() {};	
