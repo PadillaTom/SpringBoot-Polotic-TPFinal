@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.padillatomas.tpfinal.model.Reserva;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
-	@Query("select * from reservas ORDER BY reservaId DESC LIMIT 1")
+	@Query(value ="select * from reservas ORDER BY reserva_id DESC LIMIT 1", nativeQuery = true)
 	Reserva lastItem();
 }
