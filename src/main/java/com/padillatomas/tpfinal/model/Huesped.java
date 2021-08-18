@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class Huesped {
 	@Column(name="profesion_huesped")
 	private String profesionHuesped;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Reserva> huesReserva = new ArrayList<>();
 	
 	public Huesped() {}

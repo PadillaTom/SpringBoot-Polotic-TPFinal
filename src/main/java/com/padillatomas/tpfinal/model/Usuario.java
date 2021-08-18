@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,14 +31,14 @@ public class Usuario {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(
 			name= "empleado_id",
 			referencedColumnName = "empleadoId"
 			)
 	private Empleado usuEmpleado;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Reserva> usuReserva = new ArrayList<>();
 	
 	public Usuario() {};	
