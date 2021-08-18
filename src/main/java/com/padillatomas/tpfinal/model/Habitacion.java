@@ -3,7 +3,6 @@ package com.padillatomas.tpfinal.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +28,7 @@ public class Habitacion {
 	@Column(name="precio_noche_habitacion")
 	private double precioNocheHabitacion;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Reserva> habReserva = new ArrayList<>();
 	
 

@@ -37,7 +37,7 @@ public class Usuario {
 			)
 	private Empleado usuEmpleado;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private List<Reserva> usuReserva = new ArrayList<>();
 	
 	public Usuario() {};	
