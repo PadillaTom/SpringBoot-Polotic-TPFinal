@@ -92,7 +92,7 @@ public class ReservaServiceImpl implements ReservaService {
 	// ::: LAST RESERVA :::
 	@Override
 	public Reserva traerLastReserva() {		
-		return reservaRepository.findTopByOrderByReservaIdDesc();
+		return reservaRepository.lastItem();
 	}
 
 }
