@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Huesped {
 	private String profesionHuesped;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Reserva> huesReserva;
+	private List<Reserva> huesReserva = new ArrayList<>();
 	
 	public Huesped() {}
 	

@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -37,7 +38,7 @@ public class Usuario {
 	private Empleado usuEmpleado;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Reserva> usuReserva;
+	private List<Reserva> usuReserva = new ArrayList<>();
 	
 	public Usuario() {};	
 	

@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +30,7 @@ public class Habitacion {
 	private double precioNocheHabitacion;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Reserva> habReserva;
+	private List<Reserva> habReserva = new ArrayList<>();
 	
 
 	public Habitacion() {
