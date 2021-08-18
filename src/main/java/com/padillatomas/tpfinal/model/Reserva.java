@@ -2,12 +2,14 @@ package com.padillatomas.tpfinal.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,13 +33,25 @@ public class Reserva {
 	@Column(name ="precio_total")
 	private double precioTotal;
 	
-	@ManyToOne	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(
+			name= "huesped_id",
+			referencedColumnName = "huespedId"
+			)	
 	Huesped resHuesped;
 	
-	@ManyToOne	
+	@OneToOne
+	@JoinColumn(
+			name= "usuario_id",
+			referencedColumnName = "usuarioId"
+			)
 	Usuario resUsuario;
 	
-	@ManyToOne	
+	@OneToOne
+	@JoinColumn(
+			name= "habitacion_id",
+			referencedColumnName = "habitacionId"
+			)
 	Habitacion resHabitacion;
 	
 	
