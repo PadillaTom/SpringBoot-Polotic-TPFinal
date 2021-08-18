@@ -11,5 +11,8 @@ public interface ReservaService {
 	
 	// Fetch All:
 	List<Reserva> traerAllReservas();	
+	
+	// Fetch Last:
+	Reserva traerLastReserva();
 
 }

@@ -6,4 +6,5 @@ import com.padillatomas.tpfinal.model.Reserva;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
+	Reserva findTopByOrderByReservaIdDesc();
 }

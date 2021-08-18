@@ -11,6 +11,9 @@ public interface UsuarioService {
 	// Create USUARIO:
 	Usuario saveUsuario(Usuario usuario);
 	
+	// Fetch by Id:
+	Usuario fetchById(Long id);
+	
 	// Fetch ALL USUARIOS:
 	List<Usuario> fetchUsuarios();
 	

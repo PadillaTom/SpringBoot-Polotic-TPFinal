@@ -39,4 +39,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioRepository.findAll();
 	}
 
+	// --- FETCH BY ID ---
+	@Override
+	public Usuario fetchById(Long id) {		
+		return usuarioRepository.getById(id);
+	}
+
 }

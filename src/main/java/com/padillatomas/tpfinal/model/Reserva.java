@@ -2,6 +2,7 @@ package com.padillatomas.tpfinal.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,11 +33,11 @@ public class Reserva {
 	@Column(name ="precio_total")
 	private double precioTotal;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(
 			name= "huesped_id",
 			referencedColumnName = "huespedId"
-			)
+			)	
 	Huesped resHuesped;
 	
 	@OneToOne
