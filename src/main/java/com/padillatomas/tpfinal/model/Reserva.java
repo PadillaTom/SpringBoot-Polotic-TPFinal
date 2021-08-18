@@ -27,6 +27,8 @@ public class Reserva {
 	private Date fechaDeCarga;
 	@Column(name ="cantidad_personas")
 	private int cantidadPersonas;
+	@Column(name ="cantidad_noches")
+	private int cantidadNoches;	
 	@Column(name ="precio_total")
 	private double precioTotal;
 	
@@ -54,13 +56,14 @@ public class Reserva {
 	
 	public Reserva() {}
 
-	public Reserva(Date fechaDe, Date fechaHasta, Date fechaDeCarga, int cantidadPersonas, double precioTotal,
+	public Reserva(Date fechaDe, Date fechaHasta, Date fechaDeCarga, int cantidadPersonas, int cantidadNoches, double precioTotal,
 			Huesped resHuesped, Usuario resUsuario, Habitacion resHabitacion) {
 		super();
 		this.fechaDe = fechaDe;
 		this.fechaHasta = fechaHasta;
 		this.fechaDeCarga = fechaDeCarga;
 		this.cantidadPersonas = cantidadPersonas;
+		this.cantidadNoches = cantidadNoches;
 		this.precioTotal = precioTotal;
 		this.resHuesped = resHuesped;
 		this.resUsuario = resUsuario;
@@ -105,6 +108,14 @@ public class Reserva {
 
 	public void setCantidadPersonas(int cantidadPersonas) {
 		this.cantidadPersonas = cantidadPersonas;
+	}
+
+	public int getCantidadNoches() {
+		return cantidadNoches;
+	}
+
+	public void setCantidadNoches(int cantidadNoches) {
+		this.cantidadNoches = cantidadNoches;
 	}
 
 	public double getPrecioTotal() {
