@@ -2,10 +2,13 @@ package com.padillatomas.tpfinal.service.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.padillatomas.tpfinal.model.Reserva;
 import com.padillatomas.tpfinal.repository.ReservaRepository;
 import com.padillatomas.tpfinal.service.ReservaService;
 
+@Service
 public class ReservaServiceImpl implements ReservaService {
 	
 	// Repository:
