@@ -33,21 +33,21 @@ public class Reserva {
 	@Column(name ="precio_total")
 	private double precioTotal;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(
 			name= "huesped_id",
 			referencedColumnName = "huespedId"
 			)	
 	Huesped resHuesped;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(
 			name= "usuario_id",
 			referencedColumnName = "usuarioId"
 			)
 	Usuario resUsuario;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(
 			name= "habitacion_id",
 			referencedColumnName = "habitacionId"
