@@ -3,9 +3,9 @@ package com.padillatomas.tpfinal.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +29,7 @@ public class Habitacion {
 	@Column(name="precio_noche_habitacion")
 	private double precioNocheHabitacion;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Reserva> habReserva = new ArrayList<>();
 	
 

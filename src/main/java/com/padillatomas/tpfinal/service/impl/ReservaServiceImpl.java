@@ -69,7 +69,10 @@ public class ReservaServiceImpl implements ReservaService {
         Huesped existeHues = huespedRepository.findByDniHuesped(myHuesDni);
         if(existeHues != null) {
         	reserva.setResHuesped(existeHues);
-        	existeHues.getHuesReserva().add(reserva);
+        } else {
+        	Huesped myNewH = reserva.getResHuesped();
+        	huespedRepository.save(myNewH);
+        	reserva.setResHuesped(myNewH);
         }
 		
 		// Find Usuario: 

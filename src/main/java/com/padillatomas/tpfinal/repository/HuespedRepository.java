@@ -7,4 +7,5 @@ import com.padillatomas.tpfinal.model.Huesped;
 public interface HuespedRepository extends JpaRepository<Huesped, Long> {
 	
 	Huesped findByDniHuesped(String dniHuesped);
+	
 }

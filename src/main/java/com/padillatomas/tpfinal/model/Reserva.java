@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,21 +33,21 @@ public class Reserva {
 	@Column(name ="precio_total")
 	private double precioTotal;
 	
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)	
+	@OneToOne(cascade = CascadeType.PERSIST)	
 	@JoinColumn(
 			name= "huesped_id",
 			referencedColumnName = "huespedId"
-			)	
+			)		
 	Huesped resHuesped;
 	
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(
 			name= "usuario_id",
 			referencedColumnName = "usuarioId"
 			)
 	Usuario resUsuario;
 	
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(
 			name= "habitacion_id",
 			referencedColumnName = "habitacionId"
