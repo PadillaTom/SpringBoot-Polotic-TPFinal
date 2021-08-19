@@ -13,8 +13,11 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 	@Query(value ="select * from reservas ORDER BY reserva_id DESC LIMIT 1", nativeQuery = true)
 	Reserva lastItem();
 	
-	// PorDni:
-	List<Reserva> findByResUsuarioUsuEmpleadoDniEmpleado(String dni);
+	// Por Dni:
+		List<Reserva> findByResUsuarioUsuEmpleadoDniEmpleado(String dni);
 	List<Reserva> findByResHuespedDniHuesped(String dni);	
+	
+	// Por Tipo Habitacion:
+	List<Reserva> findByResHabitacionTipoHabitacion(String tipo);
 	
 }

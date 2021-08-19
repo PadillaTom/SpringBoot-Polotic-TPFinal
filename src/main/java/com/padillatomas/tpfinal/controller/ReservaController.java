@@ -30,8 +30,14 @@ public class ReservaController {
 	// ::: POST Reservas :::
 	@PostMapping
 	public ResponseEntity<Reserva> altaRes(@RequestBody Reserva reserva){
-		return new ResponseEntity<Reserva> (reservaService.altaReserva(reserva), HttpStatus.CREATED);
+		String myResultado = reservaService.verifReserva(reserva);
+		if(myResultado.equals("no")) {
+			return null;
+		} else {			
+			return new ResponseEntity<Reserva> (reservaService.altaReserva(reserva), HttpStatus.CREATED);
+		}
 	}
+		
 	
 	/// ::: GET Reservas :::
 	@GetMapping

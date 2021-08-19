@@ -42,7 +42,33 @@ public class ReservaServiceImpl implements ReservaService {
 	// Methods
 	// **********************************
 		
-	// --- CREATE ---
+//	::: POST :::
+	
+	@Override
+	public String verifReserva(Reserva reserva) {
+		// Traer Res por Tipo Habitacion:
+		String myTipo = reserva.getResHabitacion().getTipoHabitacion();
+		List<Reserva> myList = reservaRepository.findByResHabitacionTipoHabitacion(myTipo);
+		// Traer Fechas in y out:
+		Date resIn = reserva.getFechaDe();
+		Date resOut = reserva.getFechaHasta();
+		
+		if(myList.size() > 0) {
+			for(Reserva res: myList) {
+				Date fechaDesde = res.getFechaDe();
+				Date fechaHasta = res.getFechaHasta();
+				if((resIn.before(fechaDesde)) && resOut.before(fechaDesde) || (resIn.after(fechaHasta) && resOut.after(fechaHasta))) {
+					return "yes";
+				} else {
+					return "no";
+				}
+			}
+		} else {
+			return "yes";
+		}		
+		return "return";
+	}
+	
 	@Override
 	public Reserva altaReserva(Reserva reserva) {	
 		// JSON trae Huesped y Res. Repository creara Ambos
@@ -87,6 +113,8 @@ public class ReservaServiceImpl implements ReservaService {
 		return reservaRepository.save(reserva);
 	}
 
+//	::: FETCH :::
+	
 	@Override
 	public List<Reserva> traerAllReservas() {		
 		return reservaRepository.findAll();
@@ -97,5 +125,6 @@ public class ReservaServiceImpl implements ReservaService {
 	public Reserva traerLastReserva() {		
 		return reservaRepository.lastItem();
 	}
+
 
 }

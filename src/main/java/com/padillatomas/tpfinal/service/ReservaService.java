@@ -7,6 +7,7 @@ import com.padillatomas.tpfinal.model.Reserva;
 public interface ReservaService {
 	
 	// Post :
+	String verifReserva(Reserva reserva);
 	Reserva altaReserva(Reserva reserva);
 	
 	// Fetch All:
@@ -14,5 +15,6 @@ public interface ReservaService {
 	
 	// Fetch Last:
 	Reserva traerLastReserva();
+	
 
 }
