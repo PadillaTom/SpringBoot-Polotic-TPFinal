@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +20,7 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 	
 	// Por Tipo Habitacion:
 	List<Reserva> findByResHabitacionTipoHabitacion(String tipo);
+	
+	List<Reserva> findByFechaDeCarga(Date fecha);
 	
 }

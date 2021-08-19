@@ -9,6 +9,8 @@ import com.padillatomas.tpfinal.model.Reserva;
 public interface ConsultasService {
 	
 	List<Reserva> traerResPorEmp(Empleado dni);
-	List<Reserva> traerResPorHues(Huesped dni);
+	List<Huesped> traerAllHuesped();
+	
+	List<Reserva> traerReservaPorFecha(Reserva res);
 
 }

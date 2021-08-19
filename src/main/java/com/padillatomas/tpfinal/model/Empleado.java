@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="empleados")
@@ -25,8 +27,11 @@ public class Empleado {
 	private String nombreEmpleado;
 	@Column(name = "apellido_empleado")
 	private String apellidoEmpleado;
+	
 	@Column(name = "fecha_nac_empleado")
+	@Temporal(TemporalType.DATE)
 	private Date fechaNacEmpleado;
+	
 	@Column(name = "direccion_empleado")
 	private String direccionEmpleado;
 	@Column(name = "cargo_empleado")

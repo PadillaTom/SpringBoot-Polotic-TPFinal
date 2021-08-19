@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "huespedes")
@@ -31,6 +33,7 @@ public class Huesped {
 	private String apellidoHuesped;
 	
 	@Column(name="fecha_nac_huesped")
+	@Temporal(TemporalType.DATE)
 	private Date fechaNacHuesped;
 	
 	@Column(name="direccion_huesped")

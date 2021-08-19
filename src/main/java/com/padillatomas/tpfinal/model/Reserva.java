@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "reservas")
@@ -21,10 +23,13 @@ public class Reserva {
 	private Long reservaId;
 	
 	@Column(name ="fecha_de")
+	@Temporal(TemporalType.DATE)
 	private Date fechaDe;
 	@Column(name ="fecha_hasta")
+	@Temporal(TemporalType.DATE)
 	private Date fechaHasta;
 	@Column(name ="fecha_de_carga")
+	@Temporal(TemporalType.DATE)
 	private Date fechaDeCarga;
 	@Column(name ="cantidad_personas")
 	private int cantidadPersonas;

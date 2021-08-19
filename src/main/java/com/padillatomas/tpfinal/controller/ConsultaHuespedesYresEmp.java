@@ -17,23 +17,23 @@ import com.padillatomas.tpfinal.service.ConsultasService;
 @CrossOrigin(origins = {"http://localhost:3000","https://tpfinal-polotic.netlify.app"}, allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/consultaResPorDni")
-public class ConsResPorEmpleado {
+public class ConsultaHuespedesYresEmp {
 	
-	private ConsultasService consServ;
-	public ConsResPorEmpleado(ConsultasService consServ) {
+	private ConsultasService consServ;	
+	public ConsultaHuespedesYresEmp(ConsultasService consServ) {
 		super();
 		this.consServ = consServ;
 	}
 	
 	// ::: GET Reservas :::
-	@GetMapping
+	@PostMapping
 	public List<Reserva> traerResPorEmp(@RequestBody Empleado emple){	
 		return  consServ.traerResPorEmp(emple);			
 	}
 	
-	@PostMapping
-	public List<Reserva> traerResPorHues(@RequestBody Huesped hues){
-		return consServ.traerResPorHues(hues);
+	@GetMapping
+	public List<Huesped> traerHuespedes(){
+		return consServ.traerAllHuesped();
 	}
 
 }
