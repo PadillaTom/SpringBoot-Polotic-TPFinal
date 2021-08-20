@@ -12,5 +12,6 @@ public interface ConsultasService {
 	List<Huesped> traerAllHuesped();
 	
 	List<Reserva> traerReservaPorFecha(Reserva res);
+	List<Reserva> traerResPorHyF(Reserva res);
 
 }

@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +39,29 @@ public class ConsultasServiceImpl implements ConsultasService {
 	public List<Reserva> traerReservaPorFecha(Reserva res) {		
 		Date fecha = res.getFechaDeCarga();
 		return resRepo.findByFechaDeCarga(fecha);
+	}
+
+	@Override
+	public List<Reserva> traerResPorHyF(Reserva reserva) {
+		List<Reserva> finalList = new ArrayList<>();
+		// Res by Huesped:
+		String huesDni = reserva.getResHuesped().getDniHuesped();
+		List<Reserva> myRes = resRepo.findByResHuespedDniHuesped(huesDni);
+		// Comparar Fechas:
+		Date resJsonIn = reserva.getFechaDe();
+		Date resJsonOut = reserva.getFechaHasta();
+		
+		
+		if( myRes != null) {
+			for(Reserva res: myRes ) {
+				Date resDbIn = res.getFechaDe();
+				Date resDbOut = res.getFechaHasta();
+				if(((resDbIn.after(resJsonIn) && resDbIn.before(resJsonOut)) || (resDbOut.after(resJsonIn) && resDbOut.before(resJsonOut))) || (resDbIn.before(resJsonOut)&&(resDbOut.after(resJsonIn)))){
+					finalList.add(res);
+				}
+			}
+		}		
+		return finalList;
 	}
 
 }

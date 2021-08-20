@@ -15,12 +15,15 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 	Reserva lastItem();
 	
 	// Por Dni:
-		List<Reserva> findByResUsuarioUsuEmpleadoDniEmpleado(String dni);
+	List<Reserva> findByResUsuarioUsuEmpleadoDniEmpleado(String dni);
 	List<Reserva> findByResHuespedDniHuesped(String dni);	
 	
 	// Por Tipo Habitacion:
 	List<Reserva> findByResHabitacionTipoHabitacion(String tipo);
 	
+	// Por Fecha de Carga:
 	List<Reserva> findByFechaDeCarga(Date fecha);
+	
+	
 	
 }

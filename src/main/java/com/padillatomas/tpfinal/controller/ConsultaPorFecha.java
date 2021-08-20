@@ -22,9 +22,18 @@ public class ConsultaPorFecha {
 		this.consServ = consServ;
 	}
 	
-	// ::: GET Reservas :::
+	// ::: POST Reservas :::
 	@PostMapping
 	public List<Reserva> traerResPorFecha(@RequestBody Reserva res){	
 		return  consServ.traerReservaPorFecha(res);			
 	}
+	
+	// ::: POST Reservas :::
+	@CrossOrigin(origins = {"http://localhost:3000","https://tpfinal-polotic.netlify.app"}, allowedHeaders = "*")
+	@PostMapping("/porHyF")
+	public List<Reserva> traerResPorHyF(@RequestBody Reserva res){	
+		return consServ.traerResPorHyF(res);
+	}
+	
+	
 }
