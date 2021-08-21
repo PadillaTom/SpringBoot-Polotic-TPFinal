@@ -72,12 +72,9 @@ public class ConsultasServiceImpl implements ConsultasService {
 		String empDni = res.getResUsuario().getUsuEmpleado().getDniEmpleado();
 		List<Reserva> resEmpleado = resRepo.findByResUsuarioUsuEmpleadoDniEmpleado(empDni);
 		
-		System.out.println("Dni Emp a buscar: " + empDni);
-		System.out.println("Res List EmpDNi: " + resEmpleado);
 		
 		for(Reserva resDB : resEmpleado) {
 			if(resDB.getFechaDeCarga().equals(res.getFechaDeCarga())) {
-				System.out.println("Res Match: " + resDB);
 				finalList.add(resDB);
 			}
 		}		
@@ -86,24 +83,20 @@ public class ConsultasServiceImpl implements ConsultasService {
 
 	@Override
 	public List<Reserva> traerReservasMensuales(Reserva res) {
-		List<Reserva> finalList = new ArrayList<> ();
 		
-		// Get Month Ingresado:
+		List<Reserva> finalList = new ArrayList<> ();
+				// Get Month Ingresado:
         Calendar fechaIngresada = Calendar.getInstance();
         fechaIngresada.setTime(res.getFechaDeCarga());
         int mesMio = fechaIngresada.get(Calendar.MONTH);    
-        
-        System.out.println("Mes Ingresado: " + mesMio);
-        
+                
         // Month for each res:
         List<Reserva> resInDB = resRepo.findAll();
         Calendar fechaInDB = Calendar.getInstance();
         for(Reserva resDB : resInDB) {
         	fechaInDB.setTime(resDB.getFechaDeCarga());
         	int mesDB = fechaInDB.get(Calendar.MONTH);
-        	 System.out.println("Mes DB: " + mesDB);
         	if(mesMio == mesDB) {
-        		 System.out.println("ResDB: " + resDB);
         		finalList.add(resDB);
         	}
         }             
