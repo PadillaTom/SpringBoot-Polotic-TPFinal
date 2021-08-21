@@ -22,17 +22,29 @@ public class ConsultaPorFecha {
 		this.consServ = consServ;
 	}
 	
-	// ::: POST Reservas :::
+	// ::: POST Reservas y GananciasDiarias :::
 	@PostMapping
 	public List<Reserva> traerResPorFecha(@RequestBody Reserva res){	
 		return  consServ.traerReservaPorFecha(res);			
 	}
 	
-	// ::: POST Reservas :::
-	@CrossOrigin(origins = {"http://localhost:3000","https://tpfinal-polotic.netlify.app"}, allowedHeaders = "*")
+	// ::: POST Reservas :::	
 	@PostMapping("/porHyF")
 	public List<Reserva> traerResPorHyF(@RequestBody Reserva res){	
 		return consServ.traerResPorHyF(res);
+	}
+	
+	// ::: POST Res Diarias Empleado :::	
+	@PostMapping("/resDiariasEmpleado")
+	public List<Reserva> traerResDiariasPorEmp(@RequestBody Reserva res){	
+		return consServ.traerResDiariasPorEmpleado(res);
+	}
+		
+	
+	// ::: POST Ganancias Mensuales :::	
+	@PostMapping("/ganMensuales")
+	public List<Reserva> traerResMensuales(@RequestBody Reserva res){	
+		return consServ.traerReservasMensuales(res);
 	}
 	
 	

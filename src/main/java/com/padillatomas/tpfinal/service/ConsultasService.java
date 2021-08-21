@@ -13,5 +13,7 @@ public interface ConsultasService {
 	
 	List<Reserva> traerReservaPorFecha(Reserva res);
 	List<Reserva> traerResPorHyF(Reserva res);
+	List<Reserva> traerResDiariasPorEmpleado(Reserva res);
+	List<Reserva> traerReservasMensuales(Reserva res);
 
 }
