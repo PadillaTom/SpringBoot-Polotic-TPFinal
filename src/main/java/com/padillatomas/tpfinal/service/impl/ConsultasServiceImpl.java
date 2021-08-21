@@ -69,15 +69,19 @@ public class ConsultasServiceImpl implements ConsultasService {
 	public List<Reserva> traerResDiariasPorEmpleado(Reserva res) {
 		List<Reserva> finalList = new ArrayList<>();
 		
+		Date myFecha = res.getFechaDeCarga();
 		String empDni = res.getResUsuario().getUsuEmpleado().getDniEmpleado();
 		List<Reserva> resEmpleado = resRepo.findByResUsuarioUsuEmpleadoDniEmpleado(empDni);
 		
 		
-		for(Reserva resDB : resEmpleado) {
-			if(resDB.getFechaDeCarga().compareTo(res.getFechaDeCarga()) == 0) {				
-				finalList.add(resDB);
-			}
-		}		
+		if(resEmpleado != null) {			
+			for(Reserva resDB : resEmpleado) {
+				Date fechaDB = resDB.getFechaDeCarga();				
+				if(fechaDB.equals(myFecha)) {				
+					finalList.add(resDB);
+				}
+			}		
+		}
 		return finalList;
 	}
 
