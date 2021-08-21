@@ -74,7 +74,7 @@ public class ConsultasServiceImpl implements ConsultasService {
 		
 		
 		for(Reserva resDB : resEmpleado) {
-			if(resDB.getFechaDeCarga().equals(res.getFechaDeCarga())) {
+			if(resDB.getFechaDeCarga().compareTo(res.getFechaDeCarga()) == 0) {				
 				finalList.add(resDB);
 			}
 		}		
