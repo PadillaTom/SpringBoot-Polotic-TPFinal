@@ -67,13 +67,19 @@ public class ConsultasServiceImpl implements ConsultasService {
 
 	@Override
 	public List<Reserva> traerResDiariasPorEmpleado(Reserva res) {
+		Calendar myCal = Calendar.getInstance();
 		List<Reserva> finalList = new ArrayList<>();
 		
 		Date myFecha = res.getFechaDeCarga();
+		myCal.setTime(myFecha);
+		myCal.set(Calendar.HOUR_OF_DAY, 0);
+		myCal.set(Calendar.MINUTE, 0);
+		myCal.set(Calendar.SECOND, 0);
+		myCal.set(Calendar.MILLISECOND, 0);
+		
+		
 		String empDni = res.getResUsuario().getUsuEmpleado().getDniEmpleado();
 		List<Reserva> resEmpleado = resRepo.findByResUsuarioUsuEmpleadoDniEmpleado(empDni);
-		
-		
 		if(resEmpleado != null) {			
 			for(Reserva resDB : resEmpleado) {
 				Date fechaDB = resDB.getFechaDeCarga();				
