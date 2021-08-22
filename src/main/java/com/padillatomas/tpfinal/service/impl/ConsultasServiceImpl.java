@@ -68,6 +68,7 @@ public class ConsultasServiceImpl implements ConsultasService {
 	@Override
 	public List<Reserva> traerResDiariasPorEmpleado(Reserva res) {
 		Calendar myCal = Calendar.getInstance();
+		Calendar myCalDb = Calendar.getInstance();
 		List<Reserva> finalList = new ArrayList<>();
 		
 		Date myFecha = res.getFechaDeCarga();
@@ -82,8 +83,9 @@ public class ConsultasServiceImpl implements ConsultasService {
 		List<Reserva> resEmpleado = resRepo.findByResUsuarioUsuEmpleadoDniEmpleado(empDni);
 		if(resEmpleado != null) {			
 			for(Reserva resDB : resEmpleado) {
-				Date fechaDB = resDB.getFechaDeCarga();				
-				if(fechaDB.equals(myFecha)) {				
+				Date fechaDB = resDB.getFechaDeCarga();	
+				myCalDb.setTime(fechaDB);
+				if(myCalDb.equals(myCal)) {				
 					finalList.add(resDB);
 				}
 			}		
