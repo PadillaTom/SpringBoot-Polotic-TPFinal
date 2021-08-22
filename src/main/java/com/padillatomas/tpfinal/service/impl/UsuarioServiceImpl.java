@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.padillatomas.tpfinal.exception.ResourceNotFoundException;
 import com.padillatomas.tpfinal.model.Usuario;
 import com.padillatomas.tpfinal.repository.UsuarioRepository;
 import com.padillatomas.tpfinal.service.UsuarioService;
@@ -43,6 +44,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public Usuario fetchById(Long id) {		
 		return usuarioRepository.getById(id);
+	}
+
+	// --- DELETE BY ID ---
+	@Override
+	public void eliminarUsu(Usuario usu) {
+		Long idToDelete = usu.getUsuarioId();
+		
+		// Exists?
+		usuarioRepository.findById(idToDelete).orElseThrow(()->new ResourceNotFoundException("Usuario", "usuarioId",idToDelete));
+		
+		// Delete
+		usuarioRepository.deleteById(idToDelete);
 	}
 
 }

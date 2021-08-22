@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +30,6 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 	
-	// ::: POST Usuarios :::
-	@PostMapping
-	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){
-		return new ResponseEntity<Usuario>(usuarioService.saveUsuario(usuario), HttpStatus.CREATED);
-	}
 	
 	// ::: GET Usuarios :::
 	@GetMapping
@@ -40,5 +37,18 @@ public class UsuarioController {
 		return usuarioService.fetchUsuarios();
 	}
 	
+	// ::: POST Usuarios :::
+	@PostMapping
+	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){
+		return new ResponseEntity<Usuario>(usuarioService.saveUsuario(usuario), HttpStatus.CREATED);
+	}
+	
+	// ::: POST DELETE Usuarios :::
+	@DeleteMapping("{id}")
+	public ResponseEntity<String> borrarUsuario(@PathVariable("id") Usuario usuario){
+		usuarioService.eliminarUsu(usuario);
+		return new ResponseEntity<String> ("Usuario Borrado", HttpStatus.OK);
+	}
+		
 	
 }

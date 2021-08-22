@@ -17,5 +17,8 @@ public interface UsuarioService {
 	// Fetch ALL USUARIOS:
 	List<Usuario> fetchUsuarios();
 	
+	//Borrar Usuario:
+	void eliminarUsu(Usuario usu);
+	
 
 }
