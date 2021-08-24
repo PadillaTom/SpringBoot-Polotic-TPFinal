@@ -58,4 +58,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuarioRepository.deleteById(idToDelete);
 	}
 
+	// --- EDIT BY ID ---
+	@Override
+	public Usuario editUsuario(Usuario usu, Long id) {
+		Long idToEdit = usu.getUsuarioId();
+		// Exists?
+		Usuario existingUsu = usuarioRepository.findById(idToEdit).orElseThrow(()-> new ResourceNotFoundException("Usuario","id",idToEdit));
+		
+		// Settear:		
+		existingUsu.setUsername(usu.getUsername());
+		existingUsu.setPassword(usu.getPassword());
+		existingUsu.getUsuEmpleado().setDniEmpleado(usu.getUsuEmpleado().getDniEmpleado());
+		existingUsu.getUsuEmpleado().setNombreEmpleado(usu.getUsuEmpleado().getNombreEmpleado());
+		existingUsu.getUsuEmpleado().setApellidoEmpleado(usu.getUsuEmpleado().getApellidoEmpleado());
+		existingUsu.getUsuEmpleado().setFechaNacEmpleado(usu.getUsuEmpleado().getFechaNacEmpleado());
+		existingUsu.getUsuEmpleado().setDireccionEmpleado(usu.getUsuEmpleado().getDireccionEmpleado());
+		existingUsu.getUsuEmpleado().setCargoEmpleado(usu.getUsuEmpleado().getCargoEmpleado());
+		
+		usuarioRepository.save(existingUsu);		
+		return existingUsu;
+	}
+
 }

@@ -60,9 +60,8 @@ public class UsuarioController {
 	
 	// ::: PUT BY ID Usuario :::
 	@PutMapping("{id}")
-	public ResponseEntity<String> editarUsuario(@PathVariable("id") Usuario usuario){
-		usuarioService.eliminarUsu(usuario);
-		return new ResponseEntity<String> ("Usuario Borrado", HttpStatus.OK);
+	public ResponseEntity<Usuario> editarUsuario(@PathVariable("id") Long id, @RequestBody Usuario usu){
+		return new ResponseEntity<Usuario> (usuarioService.editUsuario(usu, id), HttpStatus.OK);
 	}
 		
 	

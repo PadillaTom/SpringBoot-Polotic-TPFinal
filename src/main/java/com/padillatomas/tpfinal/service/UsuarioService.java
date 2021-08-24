@@ -20,5 +20,8 @@ public interface UsuarioService {
 	//Borrar Usuario:
 	void eliminarUsu(Usuario usu);
 	
+	// Edit Usuario:
+	Usuario editUsuario(Usuario usu, Long id );
+	
 
 }
