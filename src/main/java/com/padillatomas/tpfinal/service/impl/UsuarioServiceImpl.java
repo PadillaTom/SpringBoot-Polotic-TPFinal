@@ -61,9 +61,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	// --- EDIT BY ID ---
 	@Override
 	public Usuario editUsuario(Usuario usu, Long id) {
-		Long idToEdit = usu.getUsuarioId();
 		// Exists?
-		Usuario existingUsu = usuarioRepository.findById(idToEdit).orElseThrow(()-> new ResourceNotFoundException("Usuario","id",idToEdit));
+		Usuario existingUsu = usuarioRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Usuario","id",id));
 		
 		// Settear:		
 		existingUsu.setUsername(usu.getUsername());
