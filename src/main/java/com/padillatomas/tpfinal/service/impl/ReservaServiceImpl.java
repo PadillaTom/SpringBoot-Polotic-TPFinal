@@ -77,9 +77,22 @@ public class ReservaServiceImpl implements ReservaService {
 		if(myList.size() > 0) {
 			for(Reserva res: myList) {
 				Date fechaDesde = res.getFechaDe();
-				Date fechaHasta = res.getFechaHasta();	
+				Date fechaHasta = res.getFechaHasta();
 				
-				if( ((calIn.before(fechaDesde) && calOut.before(fechaHasta)) == true) || ((calIn.after(fechaHasta) && calOut.after(fechaHasta)) == true) ) {
+				calDbIn.setTime(fechaDesde);
+				calDbIn.set(Calendar.HOUR_OF_DAY, 0);
+				calDbIn.set(Calendar.MINUTE, 0);
+				calDbIn.set(Calendar.SECOND, 0);
+				calDbIn.set(Calendar.MILLISECOND, 0);
+				
+				calDbOut.setTime(fechaHasta);
+				calDbOut.set(Calendar.HOUR_OF_DAY, 0);
+				calDbOut.set(Calendar.MINUTE, 0);
+				calDbOut.set(Calendar.SECOND, 0);
+				calDbOut.set(Calendar.MILLISECOND, 0);				
+				
+				
+				if( ((calIn.before(fechaDesde) && calOut.before(fechaDesde)) == true) || ((calIn.after(fechaHasta) && calOut.after(fechaHasta)) == true) ) {
 					return "yes";
 				} else {
 					return "no";
