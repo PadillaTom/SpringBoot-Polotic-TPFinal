@@ -1,5 +1,6 @@
 package com.padillatomas.tpfinal.service.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -46,18 +47,51 @@ public class ReservaServiceImpl implements ReservaService {
 	
 	@Override
 	public String verifReserva(Reserva reserva) {
+		// Calendars
+		Calendar calIn = Calendar.getInstance();
+		Calendar calOut = Calendar.getInstance();
+		Calendar calDbIn = Calendar.getInstance();
+		Calendar calDbOut = Calendar.getInstance();	
+		
 		// Traer Res por Tipo Habitacion:
 		String myTipo = reserva.getResHabitacion().getTipoHabitacion();
 		List<Reserva> myList = reservaRepository.findByResHabitacionTipoHabitacion(myTipo);
+		
 		// Traer Fechas in y out:
 		Date resIn = reserva.getFechaDe();
 		Date resOut = reserva.getFechaHasta();
 		
+		// Transform DATE:
+		calIn.setTime(resIn);
+		calIn.set(Calendar.HOUR_OF_DAY, 0);
+		calIn.set(Calendar.MINUTE, 0);
+		calIn.set(Calendar.SECOND, 0);
+		calIn.set(Calendar.MILLISECOND, 0);
+		
+		calOut.setTime(resOut);
+		calOut.set(Calendar.HOUR_OF_DAY, 0);
+		calOut.set(Calendar.MINUTE, 0);
+		calOut.set(Calendar.SECOND, 0);
+		calOut.set(Calendar.MILLISECOND, 0);
+				
 		if(myList.size() > 0) {
 			for(Reserva res: myList) {
 				Date fechaDesde = res.getFechaDe();
 				Date fechaHasta = res.getFechaHasta();
-				if(((resIn.before(fechaDesde)) && resOut.before(fechaDesde)) || ((resIn.after(fechaHasta) && resOut.after(fechaHasta)))) {
+				
+				calDbIn.setTime(fechaDesde);
+				calDbIn.set(Calendar.HOUR_OF_DAY, 0);
+				calDbIn.set(Calendar.MINUTE, 0);
+				calDbIn.set(Calendar.SECOND, 0);
+				calDbIn.set(Calendar.MILLISECOND, 0);
+				
+				calDbOut.setTime(fechaHasta);
+				calDbOut.set(Calendar.HOUR_OF_DAY, 0);
+				calDbOut.set(Calendar.MINUTE, 0);
+				calDbOut.set(Calendar.SECOND, 0);
+				calDbOut.set(Calendar.MILLISECOND, 0);
+				
+				if(((calIn.before(calDbIn)) && calOut.before(calDbIn)) || ((calIn.after(calDbOut) && calOut.after(calDbOut)))) {
 					return "yes";
 				} else {
 					return "no";
