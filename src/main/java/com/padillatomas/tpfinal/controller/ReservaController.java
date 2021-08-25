@@ -33,9 +33,10 @@ public class ReservaController {
 		String myResultado = reservaService.verifReserva(reserva);
 		if(myResultado.equals("no")) {
 			return null;
-		} else {			
+		} else if (myResultado.equals("yes")) {			
 			return new ResponseEntity<Reserva> (reservaService.altaReserva(reserva), HttpStatus.CREATED);
 		}
+		else return null;
 	}
 		
 	

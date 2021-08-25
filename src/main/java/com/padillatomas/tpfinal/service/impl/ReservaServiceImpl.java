@@ -57,7 +57,7 @@ public class ReservaServiceImpl implements ReservaService {
 			for(Reserva res: myList) {
 				Date fechaDesde = res.getFechaDe();
 				Date fechaHasta = res.getFechaHasta();
-				if((resIn.before(fechaDesde)) && resOut.before(fechaDesde) || (resIn.after(fechaHasta) && resOut.after(fechaHasta))) {
+				if(((resIn.before(fechaDesde)) && resOut.before(fechaDesde)) || ((resIn.after(fechaHasta) && resOut.after(fechaHasta)))) {
 					return "yes";
 				} else {
 					return "no";
