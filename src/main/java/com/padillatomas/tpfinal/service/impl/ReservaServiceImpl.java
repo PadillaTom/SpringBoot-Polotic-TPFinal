@@ -89,10 +89,9 @@ public class ReservaServiceImpl implements ReservaService {
 				calDbOut.set(Calendar.HOUR_OF_DAY, 0);
 				calDbOut.set(Calendar.MINUTE, 0);
 				calDbOut.set(Calendar.SECOND, 0);
-				calDbOut.set(Calendar.MILLISECOND, 0);				
+				calDbOut.set(Calendar.MILLISECOND, 0);						
 				
-				
-				if( ((calIn.before(fechaDesde) && calOut.before(fechaDesde)) == true) || ((calIn.after(fechaHasta) && calOut.after(fechaHasta)) == true) ) {
+				if( ((calIn.before(calDbIn) && calOut.before(calDbIn)) == true) || ((calIn.after(calDbOut) && calOut.after(calDbOut)) == true) ) {
 					return "yes";
 				} else {
 					return "no";
